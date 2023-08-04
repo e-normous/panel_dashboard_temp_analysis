@@ -159,5 +159,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# ignoring any csv files containing personal data
+# ignoring any csv and html files containing personal data
 *.csv
+*.html
