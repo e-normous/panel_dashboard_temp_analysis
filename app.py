@@ -16,6 +16,9 @@ pane_date = pn.pane.Markdown(f"# Heute ist der {today_localized}")
 # "Zeit", "Temperatur" and "Luftfeuchtigkeit")
 df = pd.read_csv("temp_hum.csv")
 
+last_temp = df["Temperatur"].iloc[-1]
+last_measurement = df["Zeit"].iloc[-1]
+
 # transforming the time column to a datetime object and extracting only the Y, m and d from it (no time)
 df["Zeit"] = pd.to_datetime(df["Zeit"])
 df["Tag"] = df["Zeit"].dt.strftime("%Y-%m-%d")
@@ -43,6 +46,7 @@ line_chart_temp_daily_mean = create_line_chart(mean_temp_df, "Tag", "Temperatur"
 pane_line_chart_temp_daily_mean = pn.pane.Plotly(line_chart_temp_daily_mean)
 
 first_page = pn.Column(pane_date,
+          pn.pane.Markdown(f"### Letzte Messung ({last_measurement}): {last_temp.round(2)}°C"),
           pane_line_chart_temp_today,
           pane_line_chart_temp_daily_mean,
           pn.pane.Markdown("### Tägliche Durchschnittswerte"),
