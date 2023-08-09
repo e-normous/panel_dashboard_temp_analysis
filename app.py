@@ -4,6 +4,11 @@ import datetime
 
 from visualization import create_line_chart
 
+
+# the path to the e-normous logo (not in the repo due to it being in the gitignore)
+logo_enormous = "assets\logo_e-normous.png"
+enormous_pane = pn.pane.Image(logo_enormous, alt_text="Logo e-normous", link_url="https://e-normous.net", width=250)
+
 # get today's date
 today = datetime.datetime.today().strftime("%Y-%m-%d")
 today_localized = datetime.datetime.today().strftime("%d.%m.%Y")
@@ -45,7 +50,8 @@ line_chart_temp_daily_mean = create_line_chart(mean_temp_df, "Tag", "Temperatur"
 #preparing the line chart for the panel app
 pane_line_chart_temp_daily_mean = pn.pane.Plotly(line_chart_temp_daily_mean)
 
-first_page = pn.Column(pane_date,
+first_page = pn.Column(enormous_pane,
+          pane_date,
           pn.pane.Markdown(f"### Letzte Messung ({last_measurement}): {last_temp.round(2)}°C"),
           pane_line_chart_temp_today,
           pane_line_chart_temp_daily_mean,

@@ -162,3 +162,8 @@ cython_debug/
 # ignoring any csv and html files containing personal data
 *.csv
 *.html
+
+assets/
+
+color_scheme.py
+

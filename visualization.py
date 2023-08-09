@@ -1,5 +1,7 @@
 import plotly.express as px
 
+from color_scheme import colors
+
 # in order to get a nice visualization, we need to do the following steps
 # - filter / group the df for each day
 # - create a median (or mean) value for each day for the temperature
@@ -24,7 +26,8 @@ def create_line_chart(df, x_axis_values, y_axis_values, title):
             template="simple_white",
             title=title,
             width=1200,
-            height=800)
+            height=800
+            )
     
-    fig.update_traces(textposition="bottom right")
+    fig.update_traces(textposition="bottom right", line_color=colors["e-normous main blue"])
     return fig
